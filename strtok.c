@@ -14,7 +14,7 @@ char *strtok(char *str, const char *delimiters)
 {
 	static char *saveptr;
 
-	char *token start;
+	char *token str;
 
 	if (str != NULL)
 		saveptr = str;

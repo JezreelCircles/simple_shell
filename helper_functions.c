@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
-#include "main.h"
+#include "Main.h"
 #include <errno.h>
 #include <ctype.h>
 #define L 256
@@ -23,7 +23,7 @@ int terminate(char **args, char *path, char *line, char *program)
 
 	if (args[1] == NULL)
 		return (1);
-	if (all_digits(args[1]))
+	if (AllDigits(args[1]))
 		status = atoi(args[1]);
 	else
 	{
