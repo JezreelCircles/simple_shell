@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
-#include "main.h"
+#include "Main.h"
 #define  L 1024
 
 /**
@@ -73,31 +73,31 @@ int Process(char *tken, int handle, char **args, char *cd, char *line)
 {
 		if (is_empty_spaces(tken))
 		{
-			memory(args, &line);
+			Memory(args, &line);
 			return (1);
 		}
 
 		if (strcmp(tken, "clear") == 0)
 		{
-			memory(args, &line);
+			Memory(args, &line);
 			_puts("\033[2J\033[H");
 			return (1);
 		}
 		if (strcmp(tken, "env") == 0)
 		{
-			memory(args, &line);
+			Memory(args, &line);
 			_getenv();
 			return (1);
 		}
 		if (strcmp(tken, "cd") == 0 && chdir(args[1]) == 0)
 		{
-			memory(args, &line);
+			Memory(args, &line);
 			getcwd(cd, sizeof(cd));
 			return (1);
 		}
 		if (handle)
 		{
-			memory(args, &line);
+			Memory(args, &line);
 			return (1);
 		}
 		return (0);
@@ -129,7 +129,7 @@ void inter_active_mode(char *program)
 		if (is_empty_spaces(line))
 		{
 			args[0] = NULL;
-			memory(args, &line);
+			Memory(args, &line);
 			continue;
 		}
 		tken = _strtok(line, " ");
@@ -137,15 +137,15 @@ void inter_active_mode(char *program)
 			tken = _strtok(NULL, " ");
 		if (tken == NULL || strcmp(tken, "") == 0 || strcmp(tken, " ") == 0)
 		{
-			memory(args, &line);
+			Memory(args, &line);
 			continue;
 		}
 		handle = token_input(input, args, program, line, handle);
-		if (process(tken, handle, args, cd, line))
+		if (Process(tken, handle, args, cd, line))
 			continue;
-		handle = important(args, line, status, handle);
+		handle = active(args, line, status, handle);
 		status = 0;
-		memory(args, &line);
+		Memory(args, &line);
 	}
 	exit_status(handle);
 	exit(handle);

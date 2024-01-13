@@ -20,8 +20,9 @@ char *strtok(char *str, const char *delimiters)
 		saveptr = str;
 
 	if (saveptr == NULL || *saveptr == '\0')
+	{
 		return (NULL);
-
+	}
 	while (*saveptr != '\0' && strchr(delimiters, *saveptr) != NULL)
 	{
 		saveptr++;

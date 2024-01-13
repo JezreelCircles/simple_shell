@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "main.h"
+#include "Main.h"
 
 /**
  * _getenv - a function to get the environment
