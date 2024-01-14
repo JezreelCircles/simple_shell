@@ -8,21 +8,21 @@
 
 void commentAfterhash(char str[])
 {
-	int a = 0, hashin, len;
+	int a, hashin, len;
 
 	len = strlen(str);
 
-	for (a < len; len++;)
+	for (a = 0; a < len; len++)
 	{
 		if (str[a] == '#')
-		{	//finding hash
+		{	/*finding hash */
 		hashin = a;
-	       break;
+		break;
 		}
 	}
 	for (a = hashin + 1; a < len; len++)
 	{
-		str[a] = '\0'; //replace every character with hash
+		str[a] = '\0'; /* replace every character with hash*/
 	}
 
 	printf("String commented: %s\n", str);

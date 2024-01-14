@@ -14,7 +14,7 @@ char *strtok(char *str, const char *delimiters)
 {
 	static char *saveptr;
 
-	char *token str;
+	char *token_str;
 
 	if (str != NULL)
 		saveptr = str;
@@ -30,7 +30,7 @@ char *strtok(char *str, const char *delimiters)
 	if (*saveptr == '\0')
 		return (NULL);
 
-	token_start = saveptr;
+	token_str = saveptr;
 	while (*saveptr != '\0' && strchr(delimiters, *saveptr) == NULL)
 	{
 		saveptr++;
@@ -42,5 +42,5 @@ char *strtok(char *str, const char *delimiters)
 		saveptr++;
 	}
 
-	return (token_start);
+	return (token_str);
 }

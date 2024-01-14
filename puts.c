@@ -1,15 +1,16 @@
-#include <stdio.h>
+#include "Main.h"
 
 /**
- * puts - prints string of the parameter
- * @str: string
+ * _puts -  prints string of the parameter
+ * @str: string parameter
  */
 
-void puts(char *str)
+void _puts(char *str)
 {
 	while (*str != '\0')
 	{
-		putchar(*str);
+		_putchar(*str);
 		str++;
 	}
+
 }

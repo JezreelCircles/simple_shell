@@ -132,7 +132,7 @@ void inter_active_mode(char *program)
 			Memory(args, &line);
 			continue;
 		}
-		tken = _strtok(line, " ");
+		tken = strtok(line, " ");
 		while (tken == NULL && line == NULL)
 			tken = _strtok(NULL, " ");
 		if (tken == NULL || strcmp(tken, "") == 0 || strcmp(tken, " ") == 0)

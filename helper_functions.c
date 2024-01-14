@@ -116,7 +116,7 @@ int handle_path(char *input, char **args, char *program, char *line, int st)
 			}
 			return (0);
 		}
-		token = _strtok(NULL, ":");
+		token = strtok(NULL, ":");
 	}
 	snprintf(status, sizeof(status), "2");
 	return (error_handle(path_copy, program, input, args));
@@ -138,14 +138,14 @@ int token_input(char input[], char **args, char *program, char *line, int st)
 	char *token;
 	int i = 0;
 
-	token = _strtok(input, " ");
+	token = strtok(input, " ");
 	while (token != NULL)
 	{
 		if (strcmp(token, program) != 0)
 			args[i] = strdup(token);
 		else
 			args[i] = NULL;
-		token = _strtok(NULL, " ");
+		token = strtok(NULL, " ");
 		i++;
 	}
 	args[i] = NULL;
