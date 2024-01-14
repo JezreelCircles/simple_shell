@@ -2,6 +2,7 @@
 #define MAIN_H
 #include <stdio.h>
 
+
 extern char **environ;
 int is_empty_spaces(char *str);
 int active(char **args, char *line, int status, int handle);
@@ -26,8 +27,6 @@ void _getenv(void);
 int Process(char *tken, int handle, char **args, char *cd, char *);
 void commentAfterHash(char str[]);
 int Main(void);
-
-
 
 
 
