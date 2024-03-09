@@ -2,7 +2,6 @@
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <sys/wait.h>
 #include "Main.h"
 #include <errno.h>
 #include <ctype.h>
@@ -175,7 +174,7 @@ int child_process(char **args, char *line)
 		pid_t pid = getpid();
 		char pid_str[20];
 
-		snprintf(pid_str, sizeof(pid_str), "%d", pid);
+		snprintf(pid_str, sizeof(pid_str), "%lli", pid);
 		args[1] = strdup(pid_str);
 	}
 

@@ -4,8 +4,6 @@
 #include <string.h>
 #include <unistd.h>
 
-
-
 /**
  * other_error - function print eror
  * @args: array
