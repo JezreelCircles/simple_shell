@@ -1,5 +1,5 @@
-#include <string.h>
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include "Main.h"
@@ -8,17 +8,17 @@
 #define L 256
 
 /**
- * terminate - function to terminate a function process and exit
+ * terminate - function to terminate a process and exit the program
  * @args: array
  * @path: string to free
  * @line: to free
  * @program: name of program
- * Return: 1 on success
+ * Return: 1 on success otherwise 0
  */
 
 int terminate(char **args, char *path, char *line, char *program)
 {
-	int status, m = 0;
+	int status, i = 0;
 
 	if (args[1] == NULL)
 		return (1);
@@ -30,10 +30,10 @@ int terminate(char **args, char *path, char *line, char *program)
 		status = 2;
 	}
 	exit_status(status);
-	while (args[m] != NULL)
+	while (args[i] != NULL)
 	{
-		free(args[m]);
-		m++;
+		free(args[i]);
+		i++;
 	}
 	if (line != NULL)
 		free(line);
@@ -45,7 +45,7 @@ int terminate(char **args, char *path, char *line, char *program)
 }
 
 /**
- * error_handle - function name
+ * error_handle - function to handle errors
  * @input: string
  * @program: program name
  * @path_copy: string to free
@@ -55,14 +55,14 @@ int terminate(char **args, char *path, char *line, char *program)
 
 int error_handle(char *path_copy, char *program, char *input, char **args)
 {
-	int n = 0;
+	int a = 0;
 	char errorMessage[100];
 
-	while (args[n] != NULL)
-		n++;
+	while (args[a] != NULL)
+		a++;
 	free(path_copy);
 	exit_status(2);
-	sprintf(errorMessage, "%s: %d: %s: not found\n", program, n, input);
+	sprintf(errorMessage, "%s: %d: %s: not found\n", program, a, input);
 	fprintf(stderr, "%s", errorMessage);
 	return (2);
 }
@@ -115,12 +115,11 @@ int handle_path(char *input, char **args, char *program, char *line, int st)
 			}
 			return (0);
 		}
-		token = strtok(NULL, ":");
+		token = _strtok(NULL, ":");
 	}
 	snprintf(status, sizeof(status), "2");
 	return (error_handle(path_copy, program, input, args));
 }
-
 
 /**
  * token_input - function name
@@ -137,14 +136,14 @@ int token_input(char input[], char **args, char *program, char *line, int st)
 	char *token;
 	int i = 0;
 
-	token = strtok(input, " ");
+	token = _strtok(input, " ");
 	while (token != NULL)
 	{
 		if (strcmp(token, program) != 0)
 			args[i] = strdup(token);
 		else
 			args[i] = NULL;
-		token = strtok(NULL, " ");
+		token = _strtok(NULL, " ");
 		i++;
 	}
 	args[i] = NULL;
@@ -153,10 +152,9 @@ int token_input(char input[], char **args, char *program, char *line, int st)
 
 
 /**
- * child_process - function
+ * child_process - function to get the child process
  * @args: the input line
  * Return: 1
- * @line: to free
  * @line: to free
  */
 
