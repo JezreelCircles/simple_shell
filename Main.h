@@ -28,6 +28,11 @@ int Process(char *tken, int handle, char **args, char *cd, char *);
 void commentAfterHash(char str[]);
 int Main(void);
 
+int child_process(char **args, char *line);
+int token_input(char input[], char **args, char *program, char *line, int st);
+int handle_path(char input[], char **args, char *program, char *line, int st);
+int error_handle(char *path_copy, char *program, char *input, char **args);
+int terminate(char **args, char *path, char *line, char *program);
 
 
 #endif
