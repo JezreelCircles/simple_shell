@@ -176,7 +176,7 @@ int child_process(char **args, char *line)
 		pid_t pid = getpid();
 		char pid_str[20];
 
-		snprintf(pid_str, sizeof(pid_str), "%i", pid);
+		snprintf(pid_str, sizeof(pid_str), "%lli", pid);
 		args[1] = strdup(pid_str);
 	}
 
