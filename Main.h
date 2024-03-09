@@ -1,41 +1,33 @@
 #ifndef MAIN_H
 #define MAIN_H
 #include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <sys/wait.h>
 
-
-extern char **environ;
-int is_empty_spaces(char *str);
-int active(char **args, char *line, int status, int handle);
-void other_error(char **args, char *program);
-void status_writer(int number);
-int AllDigits(char *);
-void Memory(char **, char **);
-void printnum(int n);
-void exit_status(int);
-void read_exit_status(char **);
-int _getline(char **, int *, FILE *);
-int _putchar(char c);
-void _puts(char *);
-void inter_active_mode(char *);
-char *get_file_name(char *input);
-int handle_path(char *input, char **, char *, char *, int);
-int token_input(char input[], char **args, char *, char *, int);
-int child_process(char **args, char *);
-void nonInteractive(char *);
-char *_strtok(char *str, const char *delimiters);
-void _getenv(void);
-int Process(char *tken, int handle, char **args, char *cd, char *);
-void commentAfterHash(char str[]);
-int Main(void);
-
-int child_process(char **args, char *line);
 int token_input(char input[], char **args, char *program, char *line, int st);
-int handle_path(char input[], char **args, char *program, char *line, int st);
+int child_process(char **args, char *line);
+int handle_path(char *input, char **args, char *program, char *line, int st);
 int error_handle(char *path_copy, char *program, char *input, char **args);
 int terminate(char **args, char *path, char *line, char *program);
+int active(char **args, char *line, int status, int handle);
+void Memory(char **args, char **line);
+int Process(char *tken, int handle, char **args, char *cd, char *line);
+void inter_active_mode(char *program);
+void other_error(char **args, char *p);
+void exit_status(int number, char *program);
+void read_exit_status(char **args);
+void nonInteractive(char *program);
+void printnum(int n);
+int _putchar(char c);
+void _puts(char *str);
+int main(int argc, char **argv);
+void nonInteractive(char *arg);
+void inter_active_mode(char *arg);
+char *strtok(char *str, const char *delimiters);
+int _getline(char **ptr, int *n, FILE *stream);
+void _getenv(void);
+int is_empty_spaces(char *strs);
+int AllDigits(char *s);
+void commentAfterhash(char str[]);
+
 
 
 #endif
