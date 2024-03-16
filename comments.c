@@ -2,7 +2,7 @@
 #include <string.h>
 
 /**
- * commentsAfterHash - function that comments every character after hash sign
+ * commentAfterHash - function that comments every character after hash sign
  * @str: string to be used
 */
 
